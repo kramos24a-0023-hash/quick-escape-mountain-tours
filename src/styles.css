@@ -1,0 +1,990 @@
+:root {
+  color: #182018;
+  background: #f5efe5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.appShell {
+  min-height: 100vh;
+  background: #f5efe5;
+}
+
+.heroPanel {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  color: white;
+  background: #102217;
+}
+
+.heroImage,
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  background:
+    linear-gradient(90deg, rgba(8, 18, 12, 0.95), rgba(8, 18, 12, 0.72) 48%, rgba(8, 18, 12, 0.18)),
+    linear-gradient(180deg, rgba(8, 18, 12, 0.2), rgba(8, 18, 12, 0.55));
+}
+
+.topBar,
+.heroContent,
+.contentPanel {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+}
+
+.brand,
+.topActions,
+.heroActions,
+.eyebrow,
+.solidButton,
+.ghostButton {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 12px;
+}
+
+.brandLogo {
+  position: relative;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid rgba(255, 214, 163, 0.75);
+  border-radius: 8px;
+  background: #fff9ef;
+}
+
+.brandLogo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brandLogo svg {
+  width: 24px;
+  height: 24px;
+  color: #1d4f35;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.brand small {
+  color: #ffd6a3;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.topActions {
+  gap: 10px;
+}
+
+.solidButton,
+.ghostButton {
+  height: 42px;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.solidButton {
+  background: #f68b2d;
+  color: white;
+}
+
+.ghostButton {
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.solidButton svg,
+.ghostButton svg,
+.eyebrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.large {
+  height: 50px;
+  padding: 0 22px;
+}
+
+.full {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.heroContent {
+  padding: 72px 0 86px;
+}
+
+.heroContent > * {
+  max-width: 760px;
+}
+
+.eyebrow {
+  width: max-content;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 9px 12px;
+  color: #ffd6a3;
+  font-size: 14px;
+  font-weight: 800;
+  backdrop-filter: blur(14px);
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
+}
+
+h1 {
+  margin-top: 22px;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 0.96;
+  font-weight: 900;
+}
+
+.heroContent p:not(.eyebrow) {
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.heroActions {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.contentPanel {
+  transform: translateY(-44px);
+  overflow: hidden;
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: #fffaf1;
+  box-shadow: 0 28px 80px rgba(46, 36, 20, 0.16);
+}
+
+.metricStrip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #dacbb4;
+}
+
+.metricStrip div {
+  min-height: 88px;
+  border-right: 1px solid #dacbb4;
+  padding: 22px 24px;
+}
+
+.metricStrip div:last-child {
+  border-right: 0;
+}
+
+.metricStrip span {
+  display: block;
+  color: #66715e;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.metricStrip strong {
+  display: block;
+  margin-top: 8px;
+  color: #1d4f35;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.05;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  border-bottom: 1px solid #dacbb4;
+  background: #f4eadc;
+}
+
+.tab {
+  min-height: 58px;
+  border: 0;
+  border-right: 1px solid #dacbb4;
+  background: transparent;
+  color: #536052;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.tab:last-child {
+  border-right: 0;
+}
+
+.tab.active {
+  background: #173d2b;
+  color: #ffd6a3;
+}
+
+.tabBody {
+  min-height: 0;
+  padding: 26px;
+}
+
+.overviewStack,
+.activityPage,
+.promoExperience {
+  display: grid;
+  gap: 24px;
+}
+
+.tabGrid {
+  display: grid;
+  grid-template-columns: 1fr 0.86fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.copyBlock,
+.featureCard,
+.promoBox,
+.contactCard {
+  border: 1px solid #dacbb4;
+  border-radius: 10px;
+  background: white;
+  padding: 28px;
+}
+
+.copyBlock {
+  min-height: 0;
+}
+
+.sectionLabel {
+  color: #bf5a1f;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-top: 12px;
+  font-size: clamp(34px, 4.5vw, 52px);
+  line-height: 1.02;
+  font-weight: 900;
+}
+
+.copyBlock p:not(.sectionLabel),
+.sectionHeader + p,
+.featureCard p,
+.promoBox p,
+.contactCard p {
+  margin-top: 14px;
+  color: #586359;
+  line-height: 1.75;
+}
+
+.checkGrid {
+  display: grid;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.checkGrid span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #364236;
+  font-weight: 800;
+}
+
+.checkGrid svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: #1d7a52;
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.missionCard {
+  border: 1px solid #dacbb4;
+  border-radius: 10px;
+  background: #fdf6eb;
+  padding: 26px;
+}
+
+.missionCard h3 {
+  margin-top: 12px;
+  font-size: 25px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.missionCard p:not(.sectionLabel) {
+  margin-top: 13px;
+  color: #586359;
+  line-height: 1.75;
+}
+
+.featureCard.dark {
+  background: #173d2b;
+  color: white;
+}
+
+.featureCard.dark p {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.featureCard svg,
+.promoBox svg {
+  width: 38px;
+  height: 38px;
+  color: #1d7a52;
+}
+
+.featureCard.dark svg {
+  color: #ffd6a3;
+}
+
+.featureCard h3,
+.promoBox h3,
+.contactCard h3 {
+  margin-top: 26px;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.featureCard ul {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: #586359;
+  line-height: 1.65;
+}
+
+.activityHero {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.activityCopy {
+  border: 1px solid #dacbb4;
+  border-radius: 10px;
+  background: white;
+  padding: 22px;
+}
+
+.activityCopy p:not(.sectionLabel) {
+  margin-top: 14px;
+  color: #586359;
+  line-height: 1.75;
+}
+
+.activityCopy blockquote {
+  margin: 18px 0 0;
+  border-left: 5px solid #f68b2d;
+  background: #fff4e7;
+  padding: 14px 16px;
+  color: #1d4f35;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.activityVideo {
+  overflow: hidden;
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: #111811;
+}
+
+.activityVideo video {
+  display: block;
+  width: 100%;
+  max-height: 640px;
+  object-fit: contain;
+}
+
+.activityDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.sectionHeader {
+  max-width: 780px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.galleryTab {
+  display: grid;
+  gap: 26px;
+}
+
+.videoShowcase {
+  display: grid;
+  gap: 14px;
+  width: min(900px, 100%);
+  margin: 0 auto 26px;
+}
+
+.featuredVideoFrame {
+  overflow: hidden;
+  border: 1px solid #dacbb4;
+  border-radius: 14px;
+  background: #162116;
+  box-shadow: 0 24px 60px rgba(46, 36, 20, 0.18);
+}
+
+.featuredVideoFrame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #111811;
+}
+
+.videoPicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.videoPill {
+  min-height: 40px;
+  border: 1px solid #dacbb4;
+  border-radius: 999px;
+  background: #fffaf1;
+  color: #536052;
+  padding: 0 16px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.videoPill.active {
+  border-color: #173d2b;
+  background: #173d2b;
+  color: #ffd6a3;
+}
+
+.photoShowcaseGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 22px;
+  align-items: start;
+}
+
+.photoCarousel {
+  position: relative;
+  min-width: 0;
+}
+
+.carouselStage {
+  position: relative;
+  display: grid;
+  min-height: clamp(360px, 52vw, 650px);
+  overflow: hidden;
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: #171d16;
+  place-items: center;
+}
+
+.carouselStage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+  object-fit: contain;
+}
+
+.carouselStage figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(12, 20, 13, 0.76);
+  color: white;
+  padding: 13px 15px;
+  line-height: 1.55;
+  backdrop-filter: blur(10px);
+}
+
+.carouselStage figcaption strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.carouselButton {
+  position: absolute;
+  top: min(45%, 300px);
+  z-index: 2;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(12, 20, 13, 0.72);
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.carouselButton:hover {
+  background: #f68b2d;
+}
+
+.carouselButton svg {
+  width: 23px;
+  height: 23px;
+}
+
+.carouselButton.previous {
+  left: 16px;
+}
+
+.carouselButton.next {
+  right: 16px;
+}
+
+.thumbnailRail {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(92px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.thumbnail {
+  height: 76px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #172116;
+  cursor: pointer;
+  padding: 0;
+}
+
+.thumbnail.active {
+  border-color: #f68b2d;
+}
+
+.thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoNote {
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: #fffaf1;
+  padding: 22px;
+}
+
+.photoNote img {
+  display: block;
+  width: min(100%, 220px);
+  margin: 0 auto 18px;
+}
+
+.photoNote h3 {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.photoNote p {
+  margin-top: 12px;
+  color: #586359;
+  line-height: 1.7;
+}
+
+.promoLead {
+  color: #1d4f35 !important;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.promoBanner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 22px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: #173d2b;
+  color: white;
+  padding: 18px;
+}
+
+.promoBanner img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.promoBanner h2 {
+  color: white;
+  font-size: clamp(48px, 7vw, 82px);
+}
+
+.promoBanner .sectionLabel {
+  color: #ffd6a3;
+}
+
+.promoBanner .promoLead {
+  color: #ffd6a3 !important;
+}
+
+.promoActionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.inclusionsPanel {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 18px;
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: white;
+  padding: 22px;
+}
+
+.inclusionsPanel h3 {
+  margin-top: 10px;
+  font-size: 25px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.inclusionsList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.inclusionsList span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #fff4e7;
+  padding: 12px 13px;
+  color: #364236;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.inclusionsList svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  color: #1d7a52;
+}
+
+.promoBox {
+  background: #f4eadc;
+}
+
+.promoFooter {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid #dacbb4;
+  border-radius: 12px;
+  background: white;
+  padding: 22px;
+}
+
+.promoFooter > svg {
+  width: 42px;
+  height: 42px;
+  color: #f68b2d;
+}
+
+.promoFooter h3 {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.promoFooter p {
+  margin-top: 6px;
+  color: #586359;
+}
+
+.contactCard {
+  background: #161b16;
+  color: white;
+}
+
+.contactCard p {
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.contactLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 17px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+}
+
+.contactLink svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 3px;
+  color: #ffd6a3;
+}
+
+@media (max-width: 900px) {
+  .heroPanel {
+    min-height: 620px;
+  }
+
+  .topBar,
+  .heroContent,
+  .contentPanel {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .topActions .ghostButton {
+    display: none;
+  }
+
+  .metricStrip,
+  .tabGrid,
+  .cardGrid,
+  .photoShowcaseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-template-columns: repeat(7, minmax(132px, 1fr));
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 0 16px;
+  }
+
+  .tabBody {
+    padding: 20px;
+  }
+
+  .videoShowcase {
+    width: 100%;
+  }
+
+  .missionGrid,
+  .activityHero,
+  .activityDetails,
+  .promoBanner,
+  .inclusionsPanel,
+  .inclusionsList,
+  .promoActionGrid,
+  .promoFooter {
+    grid-template-columns: 1fr;
+  }
+
+  .activityVideo video {
+    max-height: none;
+  }
+
+  .thumbnailRail {
+    grid-template-columns: repeat(6, 112px);
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand small {
+    letter-spacing: 0.08em;
+  }
+
+  .brandLogo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .topActions .solidButton {
+    width: 44px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .eyebrow {
+    width: 100%;
+  }
+
+  .heroActions,
+  .heroActions .solidButton,
+  .heroActions .ghostButton {
+    width: 100%;
+  }
+
+  .metricStrip div {
+    border-right: 0;
+    border-bottom: 1px solid #dacbb4;
+  }
+
+  .metricStrip div:last-child {
+    border-bottom: 0;
+  }
+
+  .carouselStage {
+    min-height: 360px;
+  }
+
+  .carouselStage figcaption {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    padding: 11px 12px;
+  }
+
+  .carouselButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carouselButton.previous {
+    left: 10px;
+  }
+
+  .carouselButton.next {
+    right: 10px;
+  }
+
+  .videoPill {
+    flex: 1 1 100%;
+  }
+
+  .heroPanel {
+    min-height: 560px;
+  }
+
+  .contentPanel {
+    transform: translateY(-28px);
+  }
+
+  .activityCopy,
+  .copyBlock,
+  .featureCard,
+  .promoBox,
+  .contactCard,
+  .missionCard,
+  .inclusionsPanel {
+    padding: 18px;
+  }
+
+  .activityVideo video,
+  .featuredVideoFrame video {
+    max-height: 70vh;
+  }
+
+  .promoBanner {
+    padding: 12px;
+  }
+
+  .promoFooter {
+    gap: 12px;
+  }
+
+  .promoFooter .solidButton {
+    width: 100%;
+  }
+}

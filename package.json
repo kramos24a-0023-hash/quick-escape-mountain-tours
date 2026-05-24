@@ -1,0 +1,25 @@
+{
+  "name": "quick-escape-react",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3001",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 3001",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "lucide-react": "^1.14.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "@types/node": "^20.19.39",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "typescript": "^5",
+    "vite": "^7.2.7"
+  }
+}
