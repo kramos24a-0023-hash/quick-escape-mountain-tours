@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Waves,
 } from "lucide-react";
+import { InquiryMessaging } from "./InquiryMessaging";
 
 type Adventure = {
   title: string;
@@ -26,7 +27,8 @@ type TabId =
   | "mountain"
   | "gallery"
   | "promo"
-  | "contact";
+  | "contact"
+  | "messages";
 
 const contact = {
   phone: "0918 935 3692",
@@ -112,6 +114,7 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "mountain", label: "Mountain Tours" },
   { id: "promo", label: "Promo" },
   { id: "contact", label: "Contact" },
+  { id: "messages", label: "Messages" },
 ];
 
 const activityPages: Record<"river" | "atv" | "mountain", Adventure & {
@@ -300,9 +303,19 @@ export default function App() {
           {activeTab === "mountain" && <ActivityTab activity={activityPages.mountain} />}
           {activeTab === "gallery" && <GalleryTab />}
           {activeTab === "promo" && <PromoTab />}
-          {activeTab === "contact" && <ContactTab />}
+          {activeTab === "contact" && <ContactTab onOpenInquiry={() => setActiveTab("messages")} />}
+          {activeTab === "messages" && <InquiryMessaging />}
         </div>
       </section>
+
+      <button
+        className="floatingInquiryButton"
+        type="button"
+        onClick={() => setActiveTab("messages")}
+      >
+        <Mail aria-hidden="true" />
+        Message Us
+      </button>
     </main>
   );
 }
@@ -576,7 +589,7 @@ function PromoTab() {
   );
 }
 
-function ContactTab() {
+function ContactTab({ onOpenInquiry }: { onOpenInquiry: () => void }) {
   return (
     <div className="tabGrid">
       <div className="copyBlock">
@@ -597,6 +610,9 @@ function ContactTab() {
           href="https://www.google.com/maps/search/?api=1&query=Barangay%20Puray%20Rodriguez%20Rizal%20Philippines"
           text={contact.location}
         />
+        <button className="solidButton full" type="button" onClick={onOpenInquiry}>
+          Inquire About Reservation
+        </button>
         <a className="solidButton full" href={contact.facebook}>
           Message on Facebook
         </a>
