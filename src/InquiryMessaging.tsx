@@ -7,6 +7,7 @@ import {
   createConversation,
   fetchConversations,
   fetchMessages,
+  getSignedInUser,
   fetchProfile,
   InquiryCategory,
   InquiryStatus,
@@ -93,8 +94,9 @@ export function InquiryMessaging() {
         setAuthError(authRedirectError);
       }
 
+      const user = await getSignedInUser();
       const profile = await fetchProfile();
-      setIsSignedIn(Boolean(profile));
+      setIsSignedIn(Boolean(user));
       const role = profile?.role === "admin" ? "admin" : "customer";
       setProfileRole(role);
       setMode(role);
